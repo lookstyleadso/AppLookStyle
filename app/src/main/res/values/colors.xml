@@ -3,7 +3,16 @@
     <color name="primarycolor">#1363df</color>
     <color name="secundarycolor">#47b5ff</color>
     <color name="tertiarycolor">#f33535</color>
+    <color name="grey">#d9d9d9</color>
     <color name="darkcolor">#191b21</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!-- card dashboard -->
+    <color name="card_visitors">#1363df</color>
+    <color name="card_appointment">#47b5ff</color>
+    <color name="card_sales">#70727c</color>
+    <color name="card_users">#191b21</color>
+
 </resources>
