@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.example.applookstyle.ui.activity.MainActivity
 import com.example.applookstyle.databinding.ActivityLoginBinding
 import com.example.cronodepro.core.Resource
@@ -49,20 +50,27 @@ class LoginActivity : AppCompatActivity() {
             when (it) {
                 is Resource.Error -> {
                     println("Error ${it.message}")
-                    //binding.tvError.text = "Usuario y/o Contraseña incorrecta"
-                    //binding.btnLogin.isVisible = true
-                    //binding.pbLogin.isVisible = false
+
+                    if (it.message == "Error in the service"){
+                        binding.tvErrorMesagge.text = "Usuario y/o Contraseña incorrecta"
+                    }
+                    else{
+                        binding.tvErrorMesagge.text = "Intenta mas tarde"
+                    }
+                    binding.tvErrorMesagge.isVisible = true
+                    binding.progressBar.isVisible = false
+
                 }
 
                 is Resource.Loading -> {
-                    println("loading")
-                    //binding.btnLogin.isVisible = false
-                    //binding.pbLogin.isVisible = true
+                    binding.progressBar.isVisible = true
+                    binding.tvErrorMesagge.isVisible = false
+
                 }
 
                 is Resource.Success -> {
-                    println("success")
-
+                    binding.progressBar.isVisible = false
+                    binding.tvErrorMesagge.isVisible = false
                     if (it.data != null) {
                         println("success")
                         startActivity(Intent(this, MainActivity::class.java))
